@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apresentação DO</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d1117;
+      color: #e6edf3;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3vh 4vw;
+      text-align: center;
+      box-sizing: border-box;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    section:nth-child(odd) {
+      background-color: #161b22;
+    }
+
+    section:nth-child(even) {
+      background-color: #1f2937;
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 6vh, 5vw);
+      font-weight: bold;
+      color: #58a6ff;
+      margin-bottom: 2vh;
+    }
+
+    p,
+    ul,
+    li,
+    span {
+      font-size: clamp(1rem, 2.5vh, 2.5vw);
+      color: #e6edf3;
+    }
+
+    .floating-buttons {
+      position: fixed;
+      bottom: 2vh;
+      right: 2vw;
+      display: flex;
+      flex-direction: column;
+      gap: 1vh;
+      z-index: 1001;
+    }
+
+    .floating-buttons button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      font-size: 1.5rem;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .floating-buttons button.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .menu-toggle {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-size: 2rem;
+      color: #ffffff;
+      background: none;
+      border: none;
+      z-index: 1002;
+    }
+
+    .nav-menu {
+      position: absolute;
+      top: 3.5rem;
+      left: 1rem;
+      background-color: #21262d;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      z-index: 1000;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .nav-menu.show {
+      display: flex;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+
+    .nav-menu a.active {
+      background-color: rgba(88, 166, 255, 0.25);
+    }
+  </style>
+</head>
+
+<body>
+  <button class="menu-toggle" onclick="toggleMenu()"><i class="bi bi-list"></i></button>
+  <nav id="mainNav" class="nav-menu">
+    <a data-slide="0">Slide 1</a>
+    <a data-slide="1">Slide 2</a>
+    <a data-slide="2">Slide 3</a>
+    <a data-slide="3">Slide 4</a>
+    <a data-slide="4">Slide 5</a>
+    <a data-slide="5">Slide 6</a>
+    <a data-slide="6">Slide 7</a>
+    <a data-slide="7">Slide 8</a>
+    <a data-slide="8">Slide 9</a>
+    <a data-slide="9">Slide 10</a>
+    <a data-slide="10">Slide 11</a>
+    <a data-slide="11">Slide 12</a>
+    <a data-slide="12">Slide 13</a>
+    <a data-slide="13">Slide 14</a>
+    <a data-slide="14">Slide 15</a>
+    <a data-slide="15">Slide 16</a>
+    <a data-slide="16">Slide 17</a>
+    <a data-slide="17">Slide 18</a>
+    <a data-slide="18">Slide 19</a>
+    <a data-slide="19">Slide 20</a>
+  </nav>
+  <main id="mainContainer">
+    <section id="slide1">
+      <h1>Slide 1: Teoria do Desenvolvimento Organizacional</h1>
+      <p>
+        <ul>
+          <li>Professora: Ana Paula</li>
+        </ul>
+        <ul>
+          <li>Beatriz da Silva Neves</li>
+          <li>Bruno Vallim Enumo</li>
+          <li>Eduardo Henrique Zuffo</li>
+          <li>Gustavo Gabriel dos Santos Sampaio</li>
+          <li>Igor Macedo Sampaio Souto</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide2">
+      <h1>Slide 2: 🧠 O que é Desenvolvimento Organizacional (DO)?</h1>
+      <p>
+        É um conjunto de práticas e técnicas que ajudam as empresas a melhorar tanto os resultados quanto o bem-estar das pessoas que trabalham nela. Ou seja, o DO busca equilibrar produtividade e satisfação no trabalho.
+      </p>
+      <p>
+        Imagine que uma empresa é como um time: o DO ajuda esse time a jogar melhor junto, organizar suas jogadas e melhorar o relacionamento entre os jogadores e o técnico.
+      </p>
+    </section>
+    <section id="slide3">
+      <h1>Slide 3: 🧬 De onde veio o DO?</h1>
+      <p>Ele surgiu de 4 fontes principais:</p>
+      <ol>
+        <li>T-Groups (grupos de treinamento) – usados para melhorar o autoconhecimento e os relacionamentos.</li>
+        <li>Pesquisas com funcionários – entrevistavam os trabalhadores para entender o que funcionava ou não no ambiente de trabalho.</li>
+        <li>Sistemas sociotécnicos – buscavam alinhar pessoas + tecnologia para melhorar a qualidade de vida e produtividade.</li>
+        <li>Pesquisa-ação – misturava estudo e ação para resolver problemas junto com os envolvidos, não apenas observando de fora.</li>
+      </ol>
+    </section>
+    <section id="slide4">
+      <h1>Slide 4: 🧭 Qual o objetivo do DO?</h1>
+      <ul>
+        <li>Melhorar a forma como as pessoas trabalham juntas.</li>
+        <li>Resolver conflitos de forma saudável.</li>
+        <li>Planejar mudanças de forma organizada e não “no susto”.</li>
+        <li>Adaptar a empresa ao ambiente em constante mudança.</li>
+      </ul>
+    </section>
+    <section id="slide5">
+      <h1>Slide 5: 🏛️ Onde o DO pode ser aplicado?</h1>
+      <p>Em várias situações, por exemplo:</p>
+      <ul>
+        <li>Quando uma empresa precisa mudar sua estratégia.</li>
+        <li>Quando o clima entre os funcionários está ruim.</li>
+        <li>Quando há problemas de comunicação ou conflitos internos.</li>
+        <li>Quando há fusões, divisões ou mudanças estruturais.</li>
+      </ul>
+    </section>
+    <section id="slide6">
+      <h1>Slide 6: 👥 O que o DO acredita sobre as pessoas?</h1>
+      <p>
+        <ul>
+          <li>Colaboração é melhor que competição.</li>
+          <li>Grupos resolvem problemas melhor que indivíduos isolados.</li>
+          <li>Mudança planejada é melhor que mudança por impulso.</li>
+          <li>Organizações flexíveis funcionam melhor que rígidas.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide7">
+      <h1>Slide 7: ⚙️ Características do DO</h1>
+      <p>
+        <ul>
+          <li>Foca na cultura e nos processos da organização.</li>
+          <li>Envolve todos os níveis: chefes e funcionários.</li>
+          <li>Ajuda tanto no lado humano quanto técnico.</li>
+          <li>Valoriza a participação das pessoas na tomada de decisões.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide8">
+      <h1>Slide 8: 🧱 Estágios do DO (como se fosse o crescimento de uma empresa):</h1>
+      <p>
+        <ol>
+          <li>Conceitual: ideia inicial da empresa.</li>
+          <li>Organizativo: organização começa a tomar forma.</li>
+          <li>Produtivo: começa a entregar produtos/serviços.</li>
+          <li>Administrativo: cria regras e começa a se estruturar.</li>
+          <li>Normativo: busca eficiência e estabilidade.</li>
+        </ol>
+      </p>
+    </section>
+    <section id="slide9">
+      <h1>Slide 9: 🔄 O modelo de mudança de Kurt Lewin</h1>
+      <p>
+        <ol>
+          <li>Descongelar: mostrar que a mudança é necessária.</li>
+          <li>Mudar: aplicar a mudança (intervenções).</li>
+          <li>Recongelar: estabilizar a nova forma de trabalhar.</li>
+        </ol>
+      </p>
+    </section>
+    <section id="slide10">
+      <h1>Slide 10: 🔧 Intervenções do DO (ações para melhorar):</h1>
+      <p>
+        🔹 Para indivíduos:
+        <ul>
+          <li>Planejamento de carreira</li>
+          <li>Desenvolvimento de habilidades</li>
+        </ul>
+      </p>
+      <p>
+        🔹 Para grupos:
+        <ul>
+          <li>Análise de papéis</li>
+          <li>Formação de equipe</li>
+        </ul>
+      </p>
+      <p>
+        🔹 Para a organização:
+        <ul>
+          <li>Pesquisa e feedback</li>
+          <li>Grid de DO (conjunto de técnicas para mudar a cultura)</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide11">
+      <h1>Slide 11: 📊 Acompanhamento</h1>
+      <p>
+        Depois de aplicar as mudanças, é preciso avaliar:
+        <ul>
+          <li>O que deu certo?</li>
+          <li>O que precisa ser mantido?</li>
+          <li>O que precisa ser mantido?</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide12">
+      <h1>Slide 12: 🔁 Forças que causam mudança</h1>
+      <p>
+        <ul>
+          <li>Internas: mudanças de metas, tecnologia, políticas.</li>
+          <li>Externas: economia, cultura, política, tecnologia.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide13">
+      <h1>Slide 13: 🛑 Resistência à mudança</h1>
+      <p>
+        É natural que as pessoas resistam ao novo por medo ou insegurança. As causas principais são:
+        <ul>
+          <li>Medo de perder poder ou controle</li>
+          <li>Falta de informação ou confiança</li>
+          <li>Avaliações diferentes sobre a mudança</li>
+          <li>Baixa tolerância a mudanças</li>
+        </ul>
+      </p>
+      <p>
+        Como lidar com a resistência:
+        <ul>
+          <li>Comunicação clara</li>
+          <li>Participação das pessoas</li>
+          <li>Apoio emocional</li>
+          <li>Negociação e acordos</li>
+          <li>Às vezes, firmeza (coerção)</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide14">
+      <h1>Slide 14: 🌱 Cultura organizacional</h1>
+      <p>
+        A cultura é o “jeito de ser” da empresa. Envolve:
+        <ul>
+          <li>Valores (o que é certo/errado)</li>
+          <li>Rituais (tradições)</li>
+          <li>Heróis (quem é admirado)</li>
+          <li>Símbolos (logotipo, linguagem usada)</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide15">
+      <h1>Slide 15: 🌤️ Clima organizacional</h1>
+      <p>
+        É o “ambiente psicológico” do local. Como as pessoas se sentem ali?
+        <ul>
+          <li>Motivadas ou desmotivadas?</li>
+          <li>Ouvem umas às outras?</li>
+          <li>Há reconhecimento?</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide16">
+      <h1>Slide 16: 💡 Exemplo real: SERPRO</h1>
+      <p>
+        O Serpro é uma empresa estatal que se reinventou com base no DO:
+        <ul>
+          <li>Deixou de ser apenas um “braço do governo” e passou a atuar de forma mais ampla.</li>
+          <li>Melhorou a gestão, a comunicação e a relação com os funcionários.</li>
+          <li>Se tornou referência em tecnologia no setor público.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide17">
+      <h1>Slide 17: 🔁 Forças que causam mudança</h1>
+      <p>
+        <ul>
+          <li>nternas: mudanças de metas, tecnologia, políticas.</li>
+          <li>Externas: economia, cultura, política, tecnologia.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide18">
+      <h1>Slide 18: 🔁 Forças que causam mudança</h1>
+      <p>
+        <ul>
+          <li>nternas: mudanças de metas, tecnologia, políticas.</li>
+          <li>Externas: economia, cultura, política, tecnologia.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide19">
+      <h1>Slide 19: 🔁 Forças que causam mudança</h1>
+      <p>
+        <ul>
+          <li>nternas: mudanças de metas, tecnologia, políticas.</li>
+          <li>Externas: economia, cultura, política, tecnologia.</li>
+        </ul>
+      </p>
+    </section>
+    <section id="slide20">
+      <h1>Slide 20: 🔁 Forças que causam mudança</h1>
+      <p>
+        <ul>
+          <li>nternas: mudanças de metas, tecnologia, políticas.</li>
+          <li>Externas: economia, cultura, política, tecnologia.</li>
+        </ul>
+      </p>
+    </section>
+  </main>
+  <div class="floating-buttons">
+    <button id="btnAnterior" onclick="navigateSlide(-1)">
+      <i class="bi bi-arrow-up-short"></i>
+    </button>
+    <button id="btnProximo" onclick="navigateSlide(1)">
+      <i class="bi bi-arrow-down-short"></i>
+    </button>
+  </div>
+  <script>
+    const sections = document.querySelectorAll("section");
+    const btnAnterior = document.getElementById("btnAnterior");
+    const btnProximo = document.getElementById("btnProximo");
+    const navLinks = document.querySelectorAll("nav a");
+    const mainNav = document.getElementById("mainNav");
+    const menuToggle = document.querySelector(".menu-toggle");
+    let currentSlide = 0;
+    let observer;
+
+    function scrollToSlide(index) {
+      if (index >= 0 && index < sections.length) {
+        currentSlide = index;
+        sections[currentSlide].scrollIntoView({ behavior: "smooth", block: "start" });
+        history.replaceState(null, '', location.pathname);
+        updateButtons();
+        updateActiveMenu();
+      }
+    }
+    function updateButtons() {
+      btnAnterior.classList.toggle("disabled", currentSlide === 0);
+      btnProximo.classList.toggle("disabled", currentSlide === sections.length - 1);
+    }
+    function updateActiveMenu() {
+      navLinks.forEach((a, i) => a.classList.toggle("active", i === currentSlide));
+    }
+    function navigateSlide(dir) {
+      scrollToSlide(currentSlide + dir);
+    }
+    function toggleMenu() {
+      mainNav.classList.toggle("show");
+    }
+    function reobserveSections() {
+      sections.forEach(section => observer.observe(section));
+    }
+
+    document.addEventListener("click", (e) => {
+      if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+        mainNav.classList.remove("show");
+      }
+    });
+
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = Array.from(sections).indexOf(entry.target);
+          currentSlide = index;
+          updateButtons();
+          updateActiveMenu();
+          sections.forEach((s, i) => s.classList.toggle('active', i === index));
+        }
+      });
+    }, { threshold: 0.6 });
+    sections.forEach(section => observer.observe(section));
+
+    window.addEventListener("DOMContentLoaded", () => {
+      scrollToSlide(0);
+    });
+
+    let resizeTimeout;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimeout);
+      observer.disconnect();
+      resizeTimeout = setTimeout(() => {
+        scrollToSlide(currentSlide);
+        reobserveSections();
+      }, 300);
+    });
+
+    navLinks.forEach(a => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const index = parseInt(a.getAttribute("data-slide"));
+        scrollToSlide(index);
+        mainNav.classList.remove("show");
+      });
+    });
+  </script>
+</body>
+
+</html>
