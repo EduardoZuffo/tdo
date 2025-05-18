@@ -1,166 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apresentação DO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teoria do Desenvolvimento Organizacional</title>
+
+  <!-- Favicon e ícone de toque -->
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="img/favicon.png">
+
+  <!-- CSS externo -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos personalizados -->
   <style>
-    html,
     body {
       margin: 0;
       padding: 0;
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(90deg, #0A0A0A 0%, #2BA6FF 21.5%, #537cb6 33%, #2BA6FF 65.5%, #0A0A0A 100%);
+      color: #fff;
       scroll-behavior: smooth;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0d1117;
-      color: #e6edf3;
     }
 
-    section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 3vh 4vw;
-      text-align: center;
-      box-sizing: border-box;
-      opacity: 1;
-      transition: opacity 0.5s ease-in-out;
+    .section {
+      background-color: rgba(5, 5, 5, 0.35);
+      border-radius: 20px;
+      padding: 60px 30px;
+      margin: 40px auto;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9);
     }
 
-    section:nth-child(odd) {
-      background-color: #161b22;
+    .section:nth-child(even) .row {
+      flex-direction: row-reverse;
     }
 
-    section:nth-child(even) {
-      background-color: #1f2937;
+    .img-fluid {
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      max-width: 100%;
+      height: auto;
     }
 
-    h1 {
-      font-size: clamp(1.5rem, 6vh, 5vw);
-      font-weight: bold;
-      color: #58a6ff;
-      margin-bottom: 2vh;
+    p, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #f1f5f9;
     }
 
-    p,
-    ul,
-    li,
-    span {
-      font-size: clamp(1rem, 2.5vh, 2.5vw);
-      color: #e6edf3;
+    a {
+      color: #93c5fd;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #bfdbfe;
     }
 
-    .floating-buttons {
+    .btn {
+      background-color: #3b82f6;
+      border: none;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s ease;
+      white-space: nowrap;
+    }
+    .btn:hover, .btn-success:hover {
+      background-color: #2563eb;
+    }
+
+    .navbar {
+      background-color: #0b1219;
+      padding: 0.6rem 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .navbar-expand-lg .navbar-nav .nav-link {
+      color: #fff;
+      font-weight: 600;
+      padding: 0 0.5rem;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link:hover {
+      color: #dbeafe;
+    }
+    .navbar-expand-lg .navbar-nav .nav-link.active {
+      color: #bfdbfe;
+    }
+    .navbar-brand, .navbar-nav .nav-link {
+      color: #fff;
+    }
+    .navbar-brand i {
+      transition: color 0.4s ease, text-shadow 0.4s ease;
+    }
+    .light-on {
+      color: #facc15 !important;
+      text-shadow: 0 0 8px #facc15, 0 0 12px #facc15;
+    }
+
+    .highlighted {
+      outline: 3px solid rgb(247, 150, 50);
+      outline-offset: 8px;
+      animation: flash-outline 2s ease-in-out;
+    }
+    @keyframes flash-outline {
+      0%   { outline-color: #000; }
+      50%  { outline-color: transparent; }
+      100% { outline-color: #fff; }
+    }
+
+    .back-to-top {
       position: fixed;
-      bottom: 2vh;
-      right: 2vw;
-      display: flex;
-      flex-direction: column;
-      gap: 1vh;
-      z-index: 1001;
-    }
-
-    .floating-buttons button {
+      bottom: 30px;
+      right: 30px;
       width: 48px;
       height: 48px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.15);
-      color: #ffffff;
-      font-size: 1.5rem;
+      background-color: rgba(5, 5, 5, 0.35);
+      color: rgba(245, 237, 237, 0.91);
       border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      display: none;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
       cursor: pointer;
     }
 
-    .floating-buttons button.disabled {
-      opacity: 0.3;
-      pointer-events: none;
+    footer {
+      background-color: #0b1219;
+      color: #fff;
+      padding: 30px 0;
+      text-align: center;
+      font-size: 0.95rem;
     }
-
-    .menu-toggle {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      font-size: 2rem;
-      color: #ffffff;
-      background: none;
-      border: none;
-      z-index: 1002;
-    }
-
-    .nav-menu {
-      position: absolute;
-      top: 3.5rem;
-      left: 1rem;
-      background-color: #21262d;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      display: none;
-      flex-direction: column;
-      gap: 0.5rem;
-      z-index: 1000;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .nav-menu.show {
-      display: flex;
-    }
-
-    .nav-menu a {
-      color: white;
+    footer a {
+      color: #fff;
+      margin: 0 6px;
       text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      transition: background 0.3s;
+      font-weight: 500;
+    }
+    footer a:hover {
+      color: #1e1e1e;
+      text-decoration: underline;
     }
 
-    .nav-menu a.active {
-      background-color: rgba(88, 166, 255, 0.25);
+    @media (max-width: 576px) {
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    @media (min-width: 992px) {
+      .navbar:hover .navbar-brand i {
+        color: #facc15;
+        text-shadow: 0 0 8px #facc15, 0 0 12px #facc15;
+      }
     }
   </style>
 </head>
+<body class="position-relative" tabindex="0">
 
-<body>
-  <button class="menu-toggle" onclick="toggleMenu()"><i class="bi bi-list"></i></button>
-  <nav id="mainNav" class="nav-menu">
-    <a data-slide="0">Slide 1</a>
-    <a data-slide="1">Slide 2</a>
-    <a data-slide="2">Slide 3</a>
-    <a data-slide="3">Slide 4</a>
-    <a data-slide="4">Slide 5</a>
-    <a data-slide="5">Slide 6</a>
-    <a data-slide="6">Slide 7</a>
-    <a data-slide="7">Slide 8</a>
-    <a data-slide="8">Slide 9</a>
-    <a data-slide="9">Slide 10</a>
-    <a data-slide="10">Slide 11</a>
-    <a data-slide="11">Slide 12</a>
-    <a data-slide="12">Slide 13</a>
-    <a data-slide="13">Slide 14</a>
-    <a data-slide="14">Slide 15</a>
-    <a data-slide="15">Slide 16</a>
-    <!-- <a data-slide="16">Slide 17</a>
-    <a data-slide="17">Slide 18</a>
-    <a data-slide="18">Slide 19</a>
-    <a data-slide="19">Slide 20</a> -->
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="javascript:void(0)">
+        <i class="bi bi-easel"></i> TDO
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+              aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list" id="navbar-icon"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#slide1">Slide 1</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide2">Slide 2</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide3">Slide 3</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide4">Slide 4</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide5">Slide 5</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide6">Slide 6</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide7">Slide 7</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide8">Slide 8</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide9">Slide 9</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide10">Slide 10</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide11">Slide 11</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide12">Slide 12</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide13">Slide 13</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide14">Slide 14</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide15">Slide 15</a></li>
+          <li class="nav-item"><a class="nav-link" href="#slide16">Slide 16</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
-  <main id="mainContainer">
-    <section id="slide1">
-      <h1>Slide 1: Teoria do Desenvolvimento Organizacional</h1>
-      <p>
+
+  <div class="container">
+  <!-- Slide 1 -->
+  <section class="section" id="slide1">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide1">
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 1: Teoria do Desenvolvimento Organizacional</h2>
         <ul>
-          <li>Professora: Ana Paula Lima Silva</li>
+          <li><strong>Professora:</strong> Ana Paula Lima Silva</li>
         </ul>
         <ul>
           <li>Beatriz da Silva Neves</li>
@@ -169,71 +222,129 @@
           <li>Gustavo Gabriel dos Santos Sampaio</li>
           <li>Igor Macedo Sampaio Souto</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide2">
-      <h1>Slide 2: 🧠 O que é Desenvolvimento Organizacional (DO)?</h1>
-      <p>
-        É um conjunto de práticas e técnicas que ajudam as empresas a melhorar tanto os resultados quanto o bem-estar das pessoas que trabalham nela. Ou seja, o DO busca equilibrar produtividade e satisfação no trabalho.
-      </p>
-      <p>
-        Imagine que uma empresa é como um time: o DO ajuda esse time a jogar melhor junto, organizar suas jogadas e melhorar o relacionamento entre os jogadores e o técnico.
-      </p>
-    </section>
-    <section id="slide3">
-      <h1>Slide 3: 🧬 De onde veio o DO?</h1>
-      <p>Ele surgiu de 4 fontes principais:</p>
-      <ol>
-        <li>T-Groups (grupos de treinamento) – usados para melhorar o autoconhecimento e os relacionamentos.</li>
-        <li>Pesquisas com funcionários – entrevistavam os trabalhadores para entender o que funcionava ou não no ambiente de trabalho.</li>
-        <li>Sistemas sociotécnicos – buscavam alinhar pessoas + tecnologia para melhorar a qualidade de vida e produtividade.</li>
-        <li>Pesquisa-ação – misturava estudo e ação para resolver problemas junto com os envolvidos, não apenas observando de fora.</li>
-      </ol>
-    </section>
-    <section id="slide4">
-      <h1>Slide 4: 🧭 Qual o objetivo do DO?</h1>
-      <ul>
-        <li>Melhorar a forma como as pessoas trabalham juntas.</li>
-        <li>Resolver conflitos de forma saudável.</li>
-        <li>Planejar mudanças de forma organizada e não “no susto”.</li>
-        <li>Adaptar a empresa ao ambiente em constante mudança.</li>
-      </ul>
-    </section>
-    <section id="slide5">
-      <h1>Slide 5: 🏛️ Onde o DO pode ser aplicado?</h1>
-      <p>Em várias situações, por exemplo:</p>
-      <ul>
-        <li>Quando uma empresa precisa mudar sua estratégia.</li>
-        <li>Quando o clima entre os funcionários está ruim.</li>
-        <li>Quando há problemas de comunicação ou conflitos internos.</li>
-        <li>Quando há fusões, divisões ou mudanças estruturais.</li>
-      </ul>
-    </section>
-    <section id="slide6">
-      <h1>Slide 6: 👥 O que o DO acredita sobre as pessoas?</h1>
-      <p>
+      </div>
+    </div>
+  </section>
+  <!-- Slide 2 -->
+  <section class="section" id="slide2">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide2">
+        <!-- <img src="img/slide2.jpg" class="img-fluid" alt="Imagem Slide2"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 2: 🧠 O que é Desenvolvimento Organizacional (DO)?</h2>
+        <p>É um conjunto de práticas e técnicas que ajudam as empresas a melhorar tanto os resultados quanto o bem-estar das pessoas que trabalham nela. O DO busca equilibrar produtividade e satisfação no trabalho.</p>
+        <p>Imagine que uma empresa é como um time: o DO ajuda esse time a jogar melhor junto, organizar suas jogadas e melhorar o relacionamento entre os jogadores e o técnico.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="section" id="slide3">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide3">
+        <!-- <img src="img/slide3.jpg" class="img-fluid" alt="Imagem Slide3"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 3: 🧬 De onde veio o DO?</h2>
+        <ol>
+          <li><strong>T-Groups:</strong> grupos de treinamento para autoconhecimento.</li>
+          <li><strong>Pesquisas com funcionários:</strong> compreender ambiente de trabalho.</li>
+          <li><strong>Sistemas sociotécnicos:</strong> alinhar pessoas e tecnologia.</li>
+          <li><strong>Pesquisa-ação:</strong> resolver problemas com os envolvidos.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="section" id="slide4">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide4">
+        <!-- <img src="img/slide4.jpg" class="img-fluid" alt="Imagem Slide4"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 4: 🧭 Qual o objetivo do DO?</h2>
+        <ul>
+          <li>Melhorar a forma como as pessoas trabalham juntas.</li>
+          <li>Resolver conflitos de forma saudável.</li>
+          <li>Planejar mudanças de forma organizada e não “no susto”.</li>
+          <li>Adaptar a empresa ao ambiente em constante mudança.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 5 -->
+  <section class="section" id="slide5">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide5">
+        <!-- <img src="img/slide5.jpg" class="img-fluid" alt="Imagem Slide5"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 5: 🏛️ Onde o DO pode ser aplicado?</h2>
+        <p>Em várias situações, por exemplo:</p>
+        <ul>
+          <li>Quando uma empresa precisa mudar sua estratégia.</li>
+          <li>Quando o clima entre os funcionários está ruim.</li>
+          <li>Quando há problemas de comunicação ou conflitos internos.</li>
+          <li>Quando há fusões, divisões ou mudanças estruturais.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="section" id="slide6">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide6">
+        <!-- <img src="img/slide6.jpg" class="img-fluid" alt="Imagem Slide6"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 6: 👥 O que o DO acredita sobre as pessoas?</h2>
         <ul>
           <li>Colaboração é melhor que competição.</li>
           <li>Grupos resolvem problemas melhor que indivíduos isolados.</li>
           <li>Mudança planejada é melhor que mudança por impulso.</li>
           <li>Organizações flexíveis funcionam melhor que rígidas.</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide7">
-      <h1>Slide 7: ⚙️ Características do DO</h1>
-      <p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 7 -->
+  <section class="section" id="slide7">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide7">
+        <!-- <img src="img/slide7.jpg" class="img-fluid" alt="Imagem Slide7"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 7: ⚙️ Características do DO</h2>
         <ul>
           <li>Foca na cultura e nos processos da organização.</li>
           <li>Envolve todos os níveis: chefes e funcionários.</li>
           <li>Ajuda tanto no lado humano quanto técnico.</li>
           <li>Valoriza a participação das pessoas na tomada de decisões.</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide8">
-      <h1>Slide 8: 🧱 Estágios do DO (como se fosse o crescimento de uma empresa):</h1>
-      <p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 8 -->
+  <section class="section" id="slide8">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide8">
+        <!-- <img src="img/slide8.jpg" class="img-fluid" alt="Imagem Slide8"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 8: 🧱 Estágios do DO (como se fosse o crescimento de uma empresa)</h2>
         <ol>
           <li>Conceitual: ideia inicial da empresa.</li>
           <li>Organizativo: organização começa a tomar forma.</li>
@@ -241,75 +352,109 @@
           <li>Administrativo: cria regras e começa a se estruturar.</li>
           <li>Normativo: busca eficiência e estabilidade.</li>
         </ol>
-      </p>
-    </section>
-    <section id="slide9">
-      <h1>Slide 9: 🔄 O modelo de mudança de Kurt Lewin</h1>
-      <p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 9 -->
+  <section class="section" id="slide9">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide9">
+        <!-- <img src="img/slide9.jpg" class="img-fluid" alt="Imagem Slide9"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 9: 🔄 O modelo de mudança de Kurt Lewin</h2>
         <ol>
           <li>Descongelar: mostrar que a mudança é necessária.</li>
           <li>Mudar: aplicar a mudança (intervenções).</li>
           <li>Recongelar: estabilizar a nova forma de trabalhar.</li>
         </ol>
-      </p>
-    </section>
-    <section id="slide10">
-      <h1>Slide 10: 🔧 Intervenções do DO (ações para melhorar):</h1>
-      <p>
-        🔹 Para indivíduos:
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 10 -->
+  <section class="section" id="slide10">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide10">
+        <!-- <img src="img/slide10.jpg" class="img-fluid" alt="Imagem Slide10"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 10: 🔧 Intervenções do DO (ações para melhorar)</h2>
+        <p>🔹 Para indivíduos:</p>
         <ul>
           <li>Planejamento de carreira</li>
           <li>Desenvolvimento de habilidades</li>
         </ul>
-      </p>
-      <p>
-        🔹 Para grupos:
+        <p>🔹 Para grupos:</p>
         <ul>
           <li>Análise de papéis</li>
           <li>Formação de equipe</li>
         </ul>
-      </p>
-      <p>
-        🔹 Para a organização:
+        <p>🔹 Para a organização:</p>
         <ul>
           <li>Pesquisa e feedback</li>
           <li>Grid de DO (conjunto de técnicas para mudar a cultura)</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide11">
-      <h1>Slide 11: 📊 Acompanhamento</h1>
-      <p>
-        Depois de aplicar as mudanças, é preciso avaliar:
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 11 -->
+  <section class="section" id="slide11">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide11">
+        <!-- <img src="img/slide11.jpg" class="img-fluid" alt="Imagem Slide11"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 11: 📊 Acompanhamento</h2>
+        <p>Depois de aplicar as mudanças, é preciso avaliar:</p>
         <ul>
           <li>O que deu certo?</li>
           <li>O que precisa ser mantido?</li>
-          <li>O que precisa ser mantido?</li>
+          <li>O que precisa ser ajustado?</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide12">
-      <h1>Slide 12: 🔁 Forças que causam mudança</h1>
-      <p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 12 -->
+  <section class="section" id="slide12">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide12">
+        <!-- <img src="img/slide12.jpg" class="img-fluid" alt="Imagem Slide12"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 12: 🔁 Forças que causam mudança</h2>
         <ul>
           <li>Internas: mudanças de metas, tecnologia, políticas.</li>
           <li>Externas: economia, cultura, política, tecnologia.</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide13">
-      <h1>Slide 13: 🛑 Resistência à mudança</h1>
-      <p>
-        É natural que as pessoas resistam ao novo por medo ou insegurança. As causas principais são:
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 13 -->
+  <section class="section" id="slide13">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide13">
+        <!-- <img src="img/slide13.jpg" class="img-fluid" alt="Imagem Slide13"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 13: 🛑 Resistência à mudança</h2>
+        <p>É natural que as pessoas resistam ao novo por medo ou insegurança. As causas principais são:</p>
         <ul>
           <li>Medo de perder poder ou controle</li>
           <li>Falta de informação ou confiança</li>
           <li>Avaliações diferentes sobre a mudança</li>
           <li>Baixa tolerância a mudanças</li>
         </ul>
-      </p>
-      <p>
-        Como lidar com a resistência:
+        <p>Como lidar com a resistência:</p>
         <ul>
           <li>Comunicação clara</li>
           <li>Participação das pessoas</li>
@@ -317,165 +462,219 @@
           <li>Negociação e acordos</li>
           <li>Às vezes, firmeza (coerção)</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide14">
-      <h1>Slide 14: 🌱 Cultura organizacional</h1>
-      <p>
-        A cultura é o “jeito de ser” da empresa. Envolve:
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 14 -->
+  <section class="section" id="slide14">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide14">
+        <!-- <img src="img/slide14.jpg" class="img-fluid" alt="Imagem Slide14"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 14: 🌱 Cultura organizacional</h2>
+        <p>A cultura é o “jeito de ser” da empresa. Envolve:</p>
         <ul>
           <li>Valores (o que é certo/errado)</li>
           <li>Rituais (tradições)</li>
           <li>Heróis (quem é admirado)</li>
           <li>Símbolos (logotipo, linguagem usada)</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide15">
-      <h1>Slide 15: 🌤️ Clima organizacional</h1>
-      <p>
-        É o “ambiente psicológico” do local. Como as pessoas se sentem ali?
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 15 -->
+  <section class="section" id="slide15">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide15">
+        <!-- <img src="img/slide15.jpg" class="img-fluid" alt="Imagem Slide15"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 15: 🌤️ Clima organizacional</h2>
+        <p>É o “ambiente psicológico” do local. Como as pessoas se sentem ali?</p>
         <ul>
           <li>Motivadas ou desmotivadas?</li>
           <li>Ouvem umas às outras?</li>
           <li>Há reconhecimento?</li>
         </ul>
-      </p>
-    </section>
-    <section id="slide16">
-      <h1>Slide 16: 💡 Exemplo real: SERPRO</h1>
-      <p>
-        O Serpro é uma empresa estatal que se reinventou com base no DO:
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide 16 -->
+  <section class="section" id="slide16">
+    <div class="row align-items-center" data-aos="fade-up">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <img src="img/slide1.jpg" class="img-fluid" alt="Imagem Slide16">
+        <!-- <img src="img/slide16.jpg" class="img-fluid" alt="Imagem Slide16"> -->
+      </div>
+      <div class="col-lg-6">
+        <h2><i class="bi bi-people-fill"></i> Slide 16: 💡 Exemplo real: SERPRO</h2>
+        <p>O Serpro é uma empresa estatal que se reinventou com base no DO:</p>
         <ul>
           <li>Deixou de ser apenas um “braço do governo” e passou a atuar de forma mais ampla.</li>
           <li>Melhorou a gestão, a comunicação e a relação com os funcionários.</li>
           <li>Se tornou referência em tecnologia no setor público.</li>
         </ul>
-      </p>
-    </section>
-    <!-- <section id="slide17">
-      <h1>Slide 17: 🔁 Forças que causam mudança</h1>
-      <p>
-        <ul>
-          <li>nternas: mudanças de metas, tecnologia, políticas.</li>
-          <li>Externas: economia, cultura, política, tecnologia.</li>
-        </ul>
-      </p>
-    </section>
-    <section id="slide18">
-      <h1>Slide 18: 🔁 Forças que causam mudança</h1>
-      <p>
-        <ul>
-          <li>nternas: mudanças de metas, tecnologia, políticas.</li>
-          <li>Externas: economia, cultura, política, tecnologia.</li>
-        </ul>
-      </p>
-    </section>
-    <section id="slide19">
-      <h1>Slide 19: 🔁 Forças que causam mudança</h1>
-      <p>
-        <ul>
-          <li>nternas: mudanças de metas, tecnologia, políticas.</li>
-          <li>Externas: economia, cultura, política, tecnologia.</li>
-        </ul>
-      </p>
-    </section>
-    <section id="slide20">
-      <h1>Slide 20: 🔁 Forças que causam mudança</h1>
-      <p>
-        <ul>
-          <li>nternas: mudanças de metas, tecnologia, políticas.</li>
-          <li>Externas: economia, cultura, política, tecnologia.</li>
-        </ul>
-      </p>
-    </section> -->
-  </main>
-  <div class="floating-buttons">
-    <button id="btnAnterior" onclick="navigateSlide(-1)">
-      <i class="bi bi-arrow-up-short"></i>
-    </button>
-    <button id="btnProximo" onclick="navigateSlide(1)">
-      <i class="bi bi-arrow-down-short"></i>
-    </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container text-center py-4">
+    <p class="mb-2">&copy; <span id="anoAtual"></span> TDO</p>
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+      <!-- Links para cada slide -->
+      <a href="#slide1">Slide 1</a>
+      <a href="#slide2">Slide 2</a>
+      <a href="#slide3">Slide 3</a>
+      <a href="#slide4">Slide 4</a>
+      <a href="#slide5">Slide 5</a>
+      <a href="#slide6">Slide 6</a>
+      <a href="#slide7">Slide 7</a>
+      <a href="#slide8">Slide 8</a>
+      <a href="#slide9">Slide 9</a>
+      <a href="#slide10">Slide 10</a>
+      <a href="#slide11">Slide 11</a>
+      <a href="#slide12">Slide 12</a>
+      <a href="#slide13">Slide 13</a>
+      <a href="#slide14">Slide 14</a>
+      <a href="#slide15">Slide 15</a>
+      <a href="#slide16">Slide 16</a>
+    </div>
   </div>
+</footer>
+
+
+<!-- Back to top -->
+<!-- <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top" id="btnTop">
+  ↑
+</button> -->
+<button id="btnTop" class="back-to-top" aria-label="Voltar ao topo">↑</button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    const sections = document.querySelectorAll("section");
-    const btnAnterior = document.getElementById("btnAnterior");
-    const btnProximo = document.getElementById("btnProximo");
-    const navLinks = document.querySelectorAll("nav a");
-    const mainNav = document.getElementById("mainNav");
-    const menuToggle = document.querySelector(".menu-toggle");
-    let currentSlide = 0;
-    let observer;
+    (function() {
+      const yearEl        = document.getElementById('anoAtual');
+      const nav           = document.querySelector('.navbar');
+      const menuCollapse  = document.getElementById('menu');
+      const toggler       = document.querySelector('.navbar-toggler');
+      const brandIcon     = document.querySelector('.navbar-brand i');
+      const menuIcon      = document.getElementById('navbar-icon');
+      const backToTopBtn  = document.getElementById('btnTop');
+      let scrollSpy;
 
-    function scrollToSlide(index) {
-      if (index >= 0 && index < sections.length) {
-        currentSlide = index;
-        sections[currentSlide].scrollIntoView({ behavior: "smooth", block: "start" });
-        history.replaceState(null, '', location.pathname);
-        updateButtons();
-        updateActiveMenu();
+      function setYear() {
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
       }
-    }
-    function updateButtons() {
-      btnAnterior.classList.toggle("disabled", currentSlide === 0);
-      btnProximo.classList.toggle("disabled", currentSlide === sections.length - 1);
-    }
-    function updateActiveMenu() {
-      navLinks.forEach((a, i) => a.classList.toggle("active", i === currentSlide));
-    }
-    function navigateSlide(dir) {
-      scrollToSlide(currentSlide + dir);
-    }
-    function toggleMenu() {
-      mainNav.classList.toggle("show");
-    }
-    function reobserveSections() {
-      sections.forEach(section => observer.observe(section));
-    }
-
-    document.addEventListener("click", (e) => {
-      if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-        mainNav.classList.remove("show");
+      function navHeight() {
+        return nav ? nav.getBoundingClientRect().height : 0;
       }
-    });
-
-    observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = Array.from(sections).indexOf(entry.target);
-          currentSlide = index;
-          updateButtons();
-          updateActiveMenu();
-          sections.forEach((s, i) => s.classList.toggle('active', i === index));
-        }
-      });
-    }, { threshold: 0.6 });
-    sections.forEach(section => observer.observe(section));
-
-    window.addEventListener("DOMContentLoaded", () => {
-      scrollToSlide(0);
-    });
-
-    let resizeTimeout;
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimeout);
-      observer.disconnect();
-      resizeTimeout = setTimeout(() => {
-        scrollToSlide(currentSlide);
-        reobserveSections();
-      }, 300);
-    });
-
-    navLinks.forEach(a => {
-      a.addEventListener("click", (e) => {
+      function updatePadding() {
+        document.documentElement.style.scrollPaddingTop = navHeight() + 'px';
+      }
+      function initSpy() {
+        scrollSpy = bootstrap.ScrollSpy.getOrCreateInstance(document.body, {
+          target: '#menu',
+          offset: navHeight() + 5
+        });
+      }
+      function refreshSpy() {
+        updatePadding();
+        if (scrollSpy) {
+          scrollSpy._config.offset = navHeight() + 5;
+          scrollSpy.refresh();
+        } else initSpy();
+      }
+      function highlight(el) {
+        el.classList.add('highlighted');
+        setTimeout(() => el.classList.remove('highlighted'), 2000);
+      }
+      function smoothScroll(target) {
+        const yOffset = -navHeight() - 5;
+        const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+      function onAnchor(e) {
+        const href = this.getAttribute('href');
+        if (!href.startsWith('#')) return;
+        const tgt = document.querySelector(href);
+        if (!tgt) return;
         e.preventDefault();
-        const index = parseInt(a.getAttribute("data-slide"));
-        scrollToSlide(index);
-        mainNav.classList.remove("show");
+        const doIt = () => {
+          smoothScroll(tgt);
+          highlight(tgt);
+          history.replaceState(null, null, ' ');
+        };
+        if (window.getComputedStyle(toggler).display !== 'none'
+            && menuCollapse.classList.contains('show')) {
+          toggler.click();
+          setTimeout(doIt, 300);
+        } else doIt();
+      }
+      function initAnchors() {
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', onAnchor));
+      }
+      function initBackToTop() {
+        window.addEventListener('scroll', () => {
+          backToTopBtn.style.display = window.scrollY > 200 ? 'flex' : 'none';
+        });
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        setYear();
+        AOS.init();
+        updatePadding();
+        initSpy();
+        initAnchors();
+        initBackToTop();
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', function(event) {
+          const isInsideMenu   = menuCollapse.contains(event.target);
+          const isTogglerClick = toggler.contains(event.target);
+          if ( menuCollapse.classList.contains('show')
+            && !isInsideMenu
+            && !isTogglerClick
+          ) {
+            toggler.click();
+          }
+        });
+
+        // Scroll suave ao clicar na logo e fechar menu
+        const brand = document.querySelector('.navbar-brand');
+        brand.addEventListener('click', function(e) {
+          e.preventDefault();                            // impede comportamento padrão
+          window.scrollTo({ top: 0, behavior: 'smooth' }); // rola pro topo
+          // Se o menu estiver aberto, fecha
+          if ( menuCollapse.classList.contains('show') ) {
+            toggler.click();
+          }
+        });
+
+        menuCollapse.addEventListener('show.bs.collapse', () => {
+          menuIcon.classList.replace('bi-list', 'bi-x');
+          brandIcon.classList.add('light-on');
+        });
+        menuCollapse.addEventListener('hide.bs.collapse', () => {
+          menuIcon.classList.replace('bi-x', 'bi-list');
+          brandIcon.classList.remove('light-on');
+        });
+
+        window.addEventListener('resize', refreshSpy);
       });
-    });
+    })();
   </script>
 </body>
-
 </html>
