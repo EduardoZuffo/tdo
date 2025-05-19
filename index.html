@@ -40,6 +40,11 @@
       flex-direction: row-reverse;
     }
 
+    .section a {
+      overflow-wrap: anywhere;
+    }
+
+
     .img-fluid {
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
@@ -153,6 +158,51 @@
       color: #1e1e1e;
       text-decoration: underline;
     }
+    .navbar-collapse {
+      max-height: 65vh;    /* Limita a altura a 65% da tela */
+      overflow-y: auto;    /* Ativa o scroll vertical se ultrapassar */
+      margin-bottom: 1rem; /* Opcional: um espaço embaixo */
+    }
+
+    /* (Opcional) Personalização da barra de rolagem */
+    .navbar-collapse::-webkit-scrollbar {
+      width: 8px;
+      background: #0b1219;
+    }
+    .navbar-collapse::-webkit-scrollbar-thumb {
+      background: #2BA6FF;
+      border-radius: 6px;
+    }
+
+
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.container, .section {
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+  flex-wrap: wrap;
+}
+
+.section {
+  padding: 60px 30px;
+}
+@media (max-width: 576px) {
+  .section {
+    padding: 30px 8px;
+  }
+}
+
 
     @media (max-width: 576px) {
       .btn {
@@ -313,14 +363,14 @@
         <!-- <img src="img/slide6.jpg" class="img-fluid" alt="Imagem Slide6"> -->
       </div>
       <div class="col-lg-6">
-        <h2><i class="bi bi-people"></i> Slide 6: O que o DO acredita sobre as pessoas?</h2>
-        <!-- <h2><i class="bi bi-people"></i> Slide 6: 👥 O que o DO acredita sobre as pessoas?</h2> -->
-        <!-- <h2><i class="bi bi-hand-thumbs-up"></i> Slide 6: 👥 O que o DO acredita sobre as pessoas?</h2> -->
+        <h2><i class="bi bi-gear"></i> Slide 6: Características do DO</h2>
+        <!-- <h2><i class="bi bi-gear"></i> Slide 6: ⚙️ Características do DO</h2> -->
+        <!-- <h2><i class="bi bi-list-check"></i> Slide 6: ⚙️ Características do DO</h2> -->
         <ul>
-          <li>A colaboração é mais eficaz que a ação individual.</li>
-          <li>A cooperação é mais eficaz do que a competição/conflito.</li>
-          <li>A mudança planejada é mais eficaz do que a mudança ao acaso.</li>
-          <li>Organizações orgânicas são mais eficazes do que organizações mecanísticas.</li>
+          <li>Foca na cultura e nos processos da organização.</li>
+          <li>Envolve todos os níveis: chefes e funcionários.</li>
+          <li>Ajuda tanto no lado humano quanto técnico.</li>
+          <li>Valoriza a participação das pessoas na tomada de decisões.</li>
         </ul>
       </div>
     </div>
@@ -334,18 +384,19 @@
         <!-- <img src="img/slide7.jpg" class="img-fluid" alt="Imagem Slide7"> -->
       </div>
       <div class="col-lg-6">
-        <h2><i class="bi bi-gear"></i> Slide 7: Características do DO</h2>
-        <!-- <h2><i class="bi bi-gear"></i> Slide 7: ⚙️ Características do DO</h2> -->
-        <!-- <h2><i class="bi bi-list-check"></i> Slide 7: ⚙️ Características do DO</h2> -->
+        <h2><i class="bi bi-people"></i> Slide 7: O que o DO acredita sobre as pessoas?</h2>
+        <!-- <h2><i class="bi bi-people"></i> Slide 7: 👥 O que o DO acredita sobre as pessoas?</h2> -->
+        <!-- <h2><i class="bi bi-hand-thumbs-up"></i> Slide 7: 👥 O que o DO acredita sobre as pessoas?</h2> -->
         <ul>
-          <li>Foca na cultura e nos processos da organização.</li>
-          <li>Envolve todos os níveis: chefes e funcionários.</li>
-          <li>Ajuda tanto no lado humano quanto técnico.</li>
-          <li>Valoriza a participação das pessoas na tomada de decisões.</li>
+          <li>A colaboração é mais eficaz que a ação individual.</li>
+          <li>A cooperação é mais eficaz do que a competição/conflito.</li>
+          <li>A mudança planejada é mais eficaz do que a mudança ao acaso.</li>
+          <li>Organizações orgânicas são mais eficazes do que organizações mecanísticas.</li>
         </ul>
       </div>
     </div>
   </section>
+
 
   <!-- Slide 8 -->
   <section class="section" id="slide8">
@@ -358,11 +409,11 @@
         <h2><i class="bi bi-diagram-3"></i> Slide 8: Estágios do DO (como se fosse o crescimento de uma empresa)</h2>
         <!-- <h2><i class="bi bi-diagram-3"></i> Slide 8: 🧱 Estágios do DO (como se fosse o crescimento de uma empresa)</h2> -->
         <ol>
-          <li>Conceitual: ideia inicial da empresa.</li>
-          <li>Organizativo: organização começa a tomar forma.</li>
-          <li>Produtivo: começa a entregar produtos/serviços.</li>
-          <li>Administrativo: cria regras e começa a se estruturar.</li>
-          <li>Normativo: busca eficiência e estabilidade.</li>
+          <li>Conceitual: Estágio onde há o reconhecimento de que mudanças são necessárias.</li>
+          <li>Organizativo: no qual começam as mobilizações para o processo de transformação.</li>
+          <li>Produtivo: Onde as ações começam a ser implementadas.</li>
+          <li>Administrativo: Avaliação das mudanças.</li>
+          <li>Normativo: Onde as mudanças são implementadas.</li>
         </ol>
       </div>
     </div>
